@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nabin Kumar Regmi | Computer Teacher</title>
+
+    <style>
+        /* =========================
+           GLOBAL STYLES
+        ========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+        header {
+            background: #111827;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            min-height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #eef4ff, #ffffff);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h4 {
+            color: #2563eb;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h2 {
+            color: #4b5563;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            max-width: 650px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .location {
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #2563eb;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #2563eb;
+            color: #2563eb;
+        }
+
+        .btn-outline:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .profile-container {
+            flex: 0 0 330px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid white;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+        }
+
+        /* =========================
+           SECTION
+        ========================== */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #6b7280;
+        }
+
+        /* =========================
+           ABOUT
+        ========================== */
+        .about-box {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .about-box p {
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        /* =========================
+           CORE VALUES
+        ========================== */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .value-card h3 {
+            color: #1f2937;
+        }
+
+        /* =========================
+           ACHIEVEMENTS
+        ========================== */
+        .achievement-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .achievement {
+            background: white;
+            padding: 20px;
+            border-left: 5px solid #2563eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .achievement:hover {
+            transform: translateX(5px);
+        }
+
+        .achievement::before {
+            content: "✓";
+            color: #2563eb;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        /* =========================
+           EXPERIENCE TIMELINE
+        ========================== */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: #2563eb;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+            padding-left: 60px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 11px;
+            top: 5px;
+            width: 21px;
+            height: 21px;
+            background: #2563eb;
+            border: 4px solid #f5f7fb;
+            border-radius: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .timeline-content h3 {
+            color: #111827;
+            margin-bottom: 5px;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: #555;
+        }
+
+        /* =========================
+           CONTACT
+        ========================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .contact-card .icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .contact-card p,
+        .contact-card a {
+            color: #555;
+        }
+
+        .contact-card a:hover {
+            color: #2563eb;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            color: #d1d5db;
+        }
+
+        /* =========================
+           BACK TO TOP
+        ========================== */
+        #topBtn {
+            display: none;
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        #topBtn:hover {
+            background: #1d4ed8;
+        }
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
+        @media (max-width: 800px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #111827;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .profile-container {
+                flex-basis: auto;
+            }
+
+            .profile-img {
+                width: 230px;
+                height: 230px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.3rem;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .profile-img {
+                width: 190px;
+                height: 190px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    Nabin<span>.</span>
+                </div>
+
+                <div class="menu-btn" onclick="toggleMenu()">
+                    ☰
+                </div>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#values">Values</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+
+                <div class="hero-text">
+                    <h4>Hello, I'm</h4>
+
+                    <h1>Nabin Kumar Regmi</h1>
+
+                    <h2>Computer Teacher & IT Professional</h2>
+
+                    <p>
+                        A motivated and experienced education and technology
+                        professional with expertise in computer applications,
+                        administration, financial management and project
+                        coordination.
+                    </p>
+
+                    <div class="location">
+                        📍 Bardiya, Nepal
+                    </div>
+
+                    <a href="#contact" class="btn">
+                        Get In Touch
+                    </a>
+
+                    <a href="#experience" class="btn btn-outline">
+                        View Experience
+                    </a>
+                </div>
+
+                <div class="profile-container">
+                    <img src="image.jpg"
+                         alt="Nabin Kumar Regmi"
+                         class="profile-img">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         ABOUT SECTION
+    ========================== -->
+    <section id="about">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Professional background and interests</p>
+            </div>
+
+            <div class="about-box">
+                <p>
+                    I am a Computer Teacher and IT professional with an
+                    academic background in Commerce (Business Studies) and
+                    extensive experience in education, computer applications,
+                    office administration and financial management.
+                </p>
+
+                <br>
+
+                <p>
+                    Throughout my professional journey, I have developed
+                    strong skills in technology, documentation, project
+                    planning, implementation, monitoring and evaluation.
+                    I enjoy sharing knowledge, solving practical problems
+                    and helping others develop their skills.
+                </p>
+
+                <br>
+
+                <p>
+                    My experience also includes working in remote areas,
+                    developing project proposals and reports, motivating
+                    teams, and supporting administrative and financial
+                    operations.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         CORE VALUES
+    ========================== -->
+    <section id="values">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>My Core Values</h2>
+                <p>Principles that guide my professional work</p>
+            </div>
+
+            <div class="values-grid">
+
+                <div class="value-card">
+                    <div class="value-icon">👨‍💼</div>
+                    <h3>Leadership & Management</h3>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">💬</div>
+                    <h3>Communication</h3>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">💻</div>
+                    <h3>Technology & Innovation</h3>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🔄</div>
+                    <h3>Adaptability</h3>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         ACHIEVEMENTS
+    ========================== -->
+    <section id="achievements">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Achievements & Skills</h2>
+                <p>Professional capabilities and experience</p>
+            </div>
+
+            <div class="achievement-list">
+
+                <div class="achievement">
+                    Completion of Masters Level in Commerce (Business Studies).
+                </div>
+
+                <div class="achievement">
+                    Proficient in common computer programs including Word,
+                    Excel, PowerPoint, E-Mail, Internet, Access, Tally,
+                    PageMaker and Corel Draw.
+                </div>
+
+                <div class="achievement">
+                    Skilled in Webpage Designing and programming applications
+                    including Access, Visual Basic, SQL, C and C++.
+                </div>
+
+                <div class="achievement">
+                    Experienced in Office Administration and Financial Management.
+                </div>
+
+                <div class="achievement">
+                    Competent in developing and preparing financial and
+                    administrative documents and organizational formats.
+                </div>
+
+                <div class="achievement">
+                    Competent in Project Planning, Implementation,
+                    Monitoring and Evaluation.
+                </div>
+
+                <div class="achievement">
+                    Experienced in Project Proposal Development and Report Writing.
+                </div>
+
+                <div class="achievement">
+                    Knowledge and experience related to Human Rights,
+                    Conflict Transformation and Peace Building.
+                </div>
+
+                <div class="achievement">
+                    Experienced in motivating and mobilizing staff including
+                    accountants, facilitators and mobilizers.
+                </div>
+
+                <div class="achievement">
+                    Experienced in working in remote areas such as Jajarkot.
+                </div>
+
+                <div class="achievement">
+                    Able to operate office equipment including telephone,
+                    fax and photocopy machines, along with motorbike driving.
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         PROFESSIONAL EXPERIENCE
+    ========================== -->
+    <section id="experience">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Professional History</h2>
+                <p>My career journey</p>
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
+                        <span class="timeline-date">
+                            2nd Sep 2018 – Present
+                        </span>
+
+                        <h3>Asst. Lecturer</h3>
+
+                        <p>
+                            <strong>Khajura Campus</strong><br>
+                            Khajura R.M.-3, Banke
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
+                        <span class="timeline-date">
+                            15 Oct 2008 – 17th March 2019
+                        </span>
+
+                        <h3>Teacher</h3>
+
+                        <p>
+                            <strong>
+                                Amar Jyoti Secondary Higher Secondary School
+                            </strong><br>
+                            Sitapur, Jamuni-5, Bardiya
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
+                        <span class="timeline-date">
+                            Jan 2008 – 15 Oct 2008
+                        </span>
+
+                        <h3>Account Officer</h3>
+
+                        <p>
+                            <strong>
+                                Dalit NGO Federation (DNF)
+                            </strong><br>
+                            Mid-Western Regional Office, Nepalgunj
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
+                        <span class="timeline-date">
+                            Jan 2006 – Dec 2007
+                        </span>
+
+                        <h3>District Programme Assistant</h3>
+
+                        <p>
+                            CMP1 of EC<br>
+                            <strong>
+                                Informal Sector Service Centre (INSEC)
+                            </strong><br>
+                            District Program Office, Jajarkot
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
+                        <span class="timeline-date">
+                            24 Feb 2003 – 02 Apr 2005
+                        </span>
+
+                        <h3>Account cum Computer Teacher</h3>
+
+                        <p>
+                            <strong>
+                                Gyanodaya Bidhya Niketan English Medium School
+                            </strong><br>
+                            Banke Gaun-12, Nepalgunj, Banke
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+    <section id="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Feel free to contact me</p>
+            </div>
+
+            <div class="contact-grid">
+
+                <div class="contact-card">
+                    <div class="icon">📞</div>
+                    <h3>Phone</h3>
+                    <a href="tel:984803573">
+                        984803573
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon">✉️</div>
+                    <h3>Email</h3>
+                    <a href="mailto:nabin77@gmail.com">
+                        nabin77@gmail.com
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon">📍</div>
+                    <h3>Location</h3>
+                    <p>Bardiya, Nepal</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon">💼</div>
+                    <h3>Profession</h3>
+                    <p>Computer Teacher</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer>
+        <p>
+            © <span id="year"></span> Nabin Kumar Regmi.
+            All Rights Reserved.
+        </p>
+    </footer>
+
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="topBtn" onclick="scrollToTop()">↑</button>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+    <script>
+
+        // Mobile menu
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+
+        // Close mobile menu after clicking a link
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                document.getElementById("navLinks").classList.remove("active");
+            });
+        });
+
+
+        // Current year in footer
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        // Back to top button
+        const topBtn = document.getElementById("topBtn");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 300) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+
+        });
+
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+    </script>
+
+</body>
+</html>
